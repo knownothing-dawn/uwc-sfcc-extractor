@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible software or scientific-QA defect
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach restricted papers, private extraction packages, credentials or personal data.
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: v1.6.0-rc.1
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - PDF preparation or inspection
+        - Source and experimental inventory
+        - Axis calibration or digitization
+        - Trace isolation or branch tracking
+        - Scientific conversion or QA
+        - Excel or Markdown export
+        - Schema or validation
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Prefer synthetic data and list exact commands.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Data hygiene
+      options:
+        - label: I removed private paths, credentials, author emails and restricted publication content.
+          required: true

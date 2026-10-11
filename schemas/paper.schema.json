@@ -1,0 +1,6803 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "1.0.0",
+        "1.1.0",
+        "1.2.0",
+        "1.3.0",
+        "1.4.0",
+        "1.5.0",
+        "1.6.0"
+      ]
+    },
+    "vocabulary_version": {
+      "enum": [
+        "1.0.0",
+        "1.1.0",
+        "1.2.0",
+        "1.3.0",
+        "1.4.0",
+        "1.5.0",
+        "1.6.0"
+      ]
+    },
+    "paper": {
+      "$ref": "#/$defs/paper"
+    },
+    "samples": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/sample"
+      }
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/condition"
+      }
+    },
+    "soil_properties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/property"
+      }
+    },
+    "curves": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/curve"
+      }
+    },
+    "uwc_points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/point"
+      }
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "derivations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/derivation"
+      }
+    },
+    "review_queue": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/review"
+      }
+    },
+    "display_translations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/translation"
+      }
+    },
+    "experimental_cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/experimental_case"
+      }
+    },
+    "coverage": {
+      "$ref": "#/$defs/coverage"
+    },
+    "expected_datasets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/expected_dataset"
+      }
+    },
+    "numerical_datasets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/numerical_dataset"
+      }
+    },
+    "reference_points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/point"
+      }
+    },
+    "observation_selections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "point_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "reference_point_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          }
+        },
+        "required": [
+          "point_id",
+          "reference_point_id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "recovery_attempts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/recovery_attempt"
+      }
+    },
+    "anchor_checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/anchor_check"
+      }
+    },
+    "source_failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dataset_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "dataset_id",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "anchor_resolutions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/anchor_resolution"
+      }
+    },
+    "point_coverage": {
+      "$ref": "#/$defs/point_coverage"
+    },
+    "anchor_summary": {
+      "type": "object",
+      "properties": {
+        "checked_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "within_tolerance_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warning_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strong_warning_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unresolved_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "selected_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "maximum_absolute_error": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mean_absolute_error": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparison_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "checked_count",
+        "within_tolerance_count",
+        "warning_count",
+        "strong_warning_count",
+        "unresolved_count",
+        "selected_count",
+        "maximum_absolute_error",
+        "mean_absolute_error",
+        "comparison_unit"
+      ],
+      "additionalProperties": false
+    },
+    "source_inspection": {
+      "type": "object",
+      "properties": {
+        "point_inventory_checked": {
+          "type": "boolean"
+        },
+        "anchor_search_completed": {
+          "type": "boolean"
+        },
+        "property_pass_completed": {
+          "type": "boolean"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "point_inventory_checked",
+        "anchor_search_completed",
+        "property_pass_completed",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "qa_gates": {
+      "type": "object",
+      "properties": {
+        "curve_completeness": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "point_source_completeness": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "source_priority_validation": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "scientific_variable_correctness": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "minimum_metadata_completeness": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "continuous_trace_processing": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "derivation_provenance": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "axis_anchor_validation": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "detection_completeness": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "numerical_quality": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        },
+        "physical_quality": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_checked"
+          ]
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "qa_settings": {
+      "type": "object",
+      "properties": {
+        "temperature_match_tolerance_celsius": {
+          "type": "number",
+          "minimum": 0
+        },
+        "volumetric_warning_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "volumetric_strong_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "normalized_warning_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_simplification_tolerance_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_x_tolerance_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_denoise_tolerance_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_transition_tolerance_factor": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_centerline_fidelity_p95_threshold_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_shared_coordinate_tolerance_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_shared_near_tolerance_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_shared_path_fraction_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_shared_near_fraction_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_shared_run_min_points": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_local_jump_threshold_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_isolation_min_segment_points": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_multimodal_y_separation_normalized": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_candidate_support_ratio": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_oversampled_absolute_count": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_oversampled_fraction": {
+          "type": "number",
+          "minimum": 0
+        },
+        "axis_anchor_residual_tolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reverse_jump_warning": {
+          "type": "number",
+          "minimum": 0
+        },
+        "reverse_jump_severe": {
+          "type": "number",
+          "minimum": 0
+        },
+        "initial_theta_warning": {
+          "type": "number",
+          "minimum": 0
+        },
+        "initial_theta_severe": {
+          "type": "number",
+          "minimum": 0
+        },
+        "branch_exact_value_tolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "branch_near_value_tolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "branch_duplicate_fraction_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "branch_order_switch_threshold": {
+          "type": "number",
+          "minimum": 0
+        },
+        "trace_enforce_segment_fidelity": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "numerical_quality": {
+      "type": "object",
+      "properties": {
+        "curve_metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "curve_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "point_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "temperature_min": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "temperature_max": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "uwc_min": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "uwc_max": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "reverse_jump_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "severe_reverse_jump_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "maximum_reverse_jump": {
+                "type": "number"
+              },
+              "maximum_absolute_slope": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "initial_water_content": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "above_initial_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "severe_above_initial_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "maximum_above_initial": {
+                "type": "number"
+              },
+              "raw_observations_retained": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "curve_id",
+              "point_count",
+              "temperature_min",
+              "temperature_max",
+              "uwc_min",
+              "uwc_max",
+              "reverse_jump_count",
+              "severe_reverse_jump_count",
+              "maximum_reverse_jump",
+              "maximum_absolute_slope",
+              "initial_water_content",
+              "above_initial_count",
+              "severe_above_initial_count",
+              "maximum_above_initial",
+              "raw_observations_retained"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "pair_metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "freezing_curve_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "thawing_curve_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "matched_temperature_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "exact_duplicate_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "exact_duplicate_fraction": {
+                "type": "number"
+              },
+              "near_duplicate_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "near_duplicate_fraction": {
+                "type": "number"
+              },
+              "branch_order_switch_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "candidate_identity_status": {
+                "enum": [
+                  "checked",
+                  "not_checked"
+                ]
+              },
+              "same_candidate_reuse_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "confirmed_shared_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "suspicious_shared_assignment_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "true_crossing_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "identity_switch_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "unclassified_order_crossing_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "possible_copied_or_shared_candidates": {
+                "type": "boolean"
+              },
+              "possible_branch_switch": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "freezing_curve_id",
+              "thawing_curve_id",
+              "matched_temperature_count",
+              "exact_duplicate_count",
+              "exact_duplicate_fraction",
+              "near_duplicate_count",
+              "near_duplicate_fraction",
+              "branch_order_switch_count",
+              "candidate_identity_status",
+              "same_candidate_reuse_count",
+              "confirmed_shared_count",
+              "suspicious_shared_assignment_count",
+              "true_crossing_count",
+              "identity_switch_count",
+              "unclassified_order_crossing_count",
+              "possible_copied_or_shared_candidates",
+              "possible_branch_switch"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "axis_metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "curve_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "status": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "not_checked",
+                  "not_applicable"
+                ]
+              },
+              "x_anchor_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "y_anchor_count": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "x_max_residual": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "y_max_residual": {
+                "anyOf": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "curve_id",
+              "status",
+              "x_anchor_count",
+              "y_anchor_count",
+              "x_max_residual",
+              "y_max_residual"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "curve_metrics",
+        "pair_metrics",
+        "axis_metrics"
+      ],
+      "additionalProperties": false
+    },
+    "raw_trace_points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/point"
+      }
+    },
+    "trace_diagnostics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/trace_diagnostic"
+      }
+    },
+    "branch_tracking_specs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/branch_tracking_spec"
+      }
+    },
+    "branch_tracking_results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/branch_tracking_result"
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "vocabulary_version",
+    "paper",
+    "samples",
+    "conditions",
+    "soil_properties",
+    "curves",
+    "uwc_points",
+    "models",
+    "evidence",
+    "derivations",
+    "review_queue",
+    "display_translations"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UWC SFCC per-paper extraction package",
+  "$defs": {
+    "paper": {
+      "type": "object",
+      "properties": {
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "paper_title": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "first_author": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "publication_year": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1000,
+              "maximum": 9999
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "journal": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "volume": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "issue": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pages": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "doi": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pdf_filename": {
+          "type": "string"
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "citation_short": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extraction_status": {
+          "type": "string",
+          "enum": [
+            "complete",
+            "partial",
+            "metadata_only",
+            "manual_review_required",
+            "not_relevant"
+          ]
+        },
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "database_ready",
+            "usable_with_review",
+            "partial",
+            "insufficient",
+            "pending",
+            "approved",
+            "rejected"
+          ]
+        },
+        "uwc_relevance": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extractable_uwc_data": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coverage_verified": {
+          "type": "boolean"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "database_ready": {
+          "type": "boolean"
+        },
+        "legacy_review_status": {
+          "anyOf": [
+            {
+              "enum": [
+                "pending",
+                "approved",
+                "rejected"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "paper_id",
+        "paper_title",
+        "authors",
+        "first_author",
+        "publication_year",
+        "journal",
+        "volume",
+        "issue",
+        "pages",
+        "doi",
+        "language",
+        "pdf_filename",
+        "source_sha256",
+        "citation_short",
+        "extraction_status",
+        "review_status",
+        "uwc_relevance",
+        "extractable_uwc_data",
+        "coverage_verified",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "sample": {
+      "type": "object",
+      "properties": {
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_name_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "soil_type_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "soil_type_normalized": {
+          "type": "string",
+          "enum": [
+            "sand",
+            "silt",
+            "clay",
+            "loam",
+            "loess",
+            "bentonite",
+            "kaolinite",
+            "peat",
+            "soil_mixture",
+            "artificial_mixture",
+            "cement_treated_soil",
+            "pure_mineral",
+            "other_porous_geomaterial",
+            "other",
+            "unknown"
+          ]
+        },
+        "soil_type_normalization_status": {
+          "type": "string",
+          "enum": [
+            "exact_match",
+            "verified_mapping",
+            "uncertain",
+            "unmapped"
+          ]
+        },
+        "material_category": {
+          "type": "string",
+          "enum": [
+            "natural_soil",
+            "soil_mixture",
+            "artificial_mixture",
+            "treated_soil",
+            "pure_mineral_sample",
+            "other_porous_geomaterial",
+            "other",
+            "unknown"
+          ]
+        },
+        "sample_preparation": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "undisturbed",
+              "remolded",
+              "compacted",
+              "saturated",
+              "unsaturated",
+              "slurry_prepared",
+              "air_dried",
+              "oven_dried",
+              "freeze_dried",
+              "other",
+              "unknown"
+            ]
+          }
+        },
+        "sample_preparation_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sample_preparation_notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      },
+      "required": [
+        "sample_id",
+        "paper_id",
+        "sample_name_reported",
+        "soil_type_reported",
+        "soil_type_normalized",
+        "soil_type_normalization_status",
+        "material_category",
+        "sample_preparation",
+        "sample_preparation_reported",
+        "sample_preparation_notes",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "condition": {
+      "type": "object",
+      "properties": {
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_label_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cycle_number": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "thermal_history_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "salt_type_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pore_water_chemistry_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "condition_notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "design_aliases": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "case_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "property": {
+                "type": "string",
+                "enum": [
+                  "specific_surface_area",
+                  "initial_volumetric_water_content",
+                  "initial_gravimetric_water_content",
+                  "volumetric_water_content",
+                  "gravimetric_water_content",
+                  "dry_density",
+                  "wet_density",
+                  "particle_density",
+                  "water_density",
+                  "specific_gravity",
+                  "degree_of_saturation",
+                  "porosity",
+                  "void_ratio",
+                  "liquid_limit",
+                  "plastic_limit",
+                  "plasticity_index",
+                  "sand_fraction",
+                  "silt_fraction",
+                  "clay_fraction",
+                  "ph",
+                  "electrical_conductivity",
+                  "organic_carbon",
+                  "cation_exchange_capacity",
+                  "mineral_fraction",
+                  "sample_diameter",
+                  "sample_height",
+                  "d10",
+                  "d30",
+                  "d50",
+                  "d60",
+                  "pressure",
+                  "confining_pressure",
+                  "cooling_rate",
+                  "warming_rate",
+                  "holding_time",
+                  "salinity",
+                  "solution_concentration",
+                  "freezing_point",
+                  "initial_freezing_temperature",
+                  "phase_transition_temperature",
+                  "other",
+                  "maximum_dry_density",
+                  "optimum_water_content",
+                  "initial_water_saturation",
+                  "initial_ionic_concentration",
+                  "matric_suction",
+                  "total_soluble_salt_content"
+                ]
+              },
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "degree_celsius",
+                  "kelvin",
+                  "degree_fahrenheit",
+                  "cubic_meter_per_cubic_meter",
+                  "kilogram_per_kilogram",
+                  "kilogram_per_cubic_meter",
+                  "gram_per_cubic_centimeter",
+                  "dimensionless",
+                  "fraction",
+                  "percent",
+                  "square_meter_per_gram",
+                  "square_meter_per_kilogram",
+                  "decisiemens_per_meter",
+                  "microsiemens_per_centimeter",
+                  "centimole_charge_per_kilogram",
+                  "millimeter",
+                  "centimeter",
+                  "meter",
+                  "kilopascal",
+                  "megapascal",
+                  "pascal",
+                  "degree_celsius_per_hour",
+                  "degree_celsius_per_minute",
+                  "hour",
+                  "minute",
+                  "second",
+                  "other",
+                  "unknown",
+                  "mole_per_liter",
+                  "millimole_per_liter"
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "case_id",
+              "property",
+              "value",
+              "unit",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "condition_id",
+        "sample_id",
+        "condition_label_reported",
+        "cycle_number",
+        "thermal_history_reported",
+        "salt_type_reported",
+        "pore_water_chemistry_reported",
+        "condition_notes",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "property": {
+      "type": "object",
+      "properties": {
+        "property_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "property": {
+          "type": "string",
+          "enum": [
+            "specific_surface_area",
+            "initial_volumetric_water_content",
+            "initial_gravimetric_water_content",
+            "volumetric_water_content",
+            "gravimetric_water_content",
+            "dry_density",
+            "wet_density",
+            "particle_density",
+            "water_density",
+            "specific_gravity",
+            "degree_of_saturation",
+            "porosity",
+            "void_ratio",
+            "liquid_limit",
+            "plastic_limit",
+            "plasticity_index",
+            "sand_fraction",
+            "silt_fraction",
+            "clay_fraction",
+            "ph",
+            "electrical_conductivity",
+            "organic_carbon",
+            "cation_exchange_capacity",
+            "mineral_fraction",
+            "sample_diameter",
+            "sample_height",
+            "d10",
+            "d30",
+            "d50",
+            "d60",
+            "pressure",
+            "confining_pressure",
+            "cooling_rate",
+            "warming_rate",
+            "holding_time",
+            "salinity",
+            "solution_concentration",
+            "freezing_point",
+            "initial_freezing_temperature",
+            "phase_transition_temperature",
+            "other",
+            "maximum_dry_density",
+            "optimum_water_content",
+            "initial_water_saturation",
+            "initial_ionic_concentration",
+            "matric_suction",
+            "total_soluble_salt_content"
+          ]
+        },
+        "property_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "value_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "unit_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "definition_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "definition_status": {
+          "enum": [
+            "explicit",
+            "uncertain"
+          ]
+        },
+        "value_source": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "derived",
+            "figure_digitized"
+          ]
+        },
+        "derivation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mineral_name_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mineral_name_normalized": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "quartz",
+                "kaolinite",
+                "montmorillonite",
+                "illite",
+                "feldspar",
+                "calcite",
+                "other",
+                "unknown"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "normalized": {
+          "type": "boolean"
+        },
+        "property_scope": {
+          "enum": [
+            "material",
+            "test_state"
+          ]
+        },
+        "applicable_condition_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "experiment_role": {
+          "type": "string",
+          "enum": [
+            "uwc_nmr",
+            "uwc_dsc",
+            "uwc_measurement",
+            "triaxial",
+            "swcc",
+            "shear_test",
+            "compaction_test",
+            "general_material_property",
+            "other_test",
+            "unspecified"
+          ]
+        },
+        "property_role": {
+          "type": "string",
+          "enum": [
+            "test_dry_density",
+            "maximum_dry_density",
+            "natural_bulk_density",
+            "wet_bulk_density",
+            "dry_density_reported_unspecified_context",
+            "particle_density",
+            "specific_gravity",
+            "average_density_basis_unspecified",
+            "porosity",
+            "water_density",
+            "initial_water_content",
+            "other"
+          ]
+        },
+        "applicability_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "reported_precision": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "property_id",
+        "sample_id",
+        "condition_id",
+        "property",
+        "property_reported",
+        "value",
+        "value_reported",
+        "unit",
+        "unit_reported",
+        "original_value",
+        "original_unit",
+        "definition_reported",
+        "definition_status",
+        "value_source",
+        "derivation_id",
+        "mineral_name_reported",
+        "mineral_name_normalized",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "digitization": {
+      "type": "object",
+      "properties": {
+        "coordinate_system": {
+          "enum": [
+            "pdf_points",
+            "image_pixels"
+          ]
+        },
+        "x_axis_scale": {
+          "enum": [
+            "linear",
+            "log",
+            "broken",
+            "unknown"
+          ]
+        },
+        "y_axis_scale": {
+          "enum": [
+            "linear",
+            "log",
+            "broken",
+            "unknown"
+          ]
+        },
+        "x_axis_orientation": {
+          "enum": [
+            "normal",
+            "reversed",
+            "unknown"
+          ]
+        },
+        "y_axis_orientation": {
+          "enum": [
+            "normal",
+            "reversed",
+            "unknown"
+          ]
+        },
+        "x_calibration_points": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y_calibration_points": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "x_calibration_residual_px": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "y_calibration_residual_px": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "axis_confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "calibration_artifact": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trace_artifact": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "overlay_path": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalized_error_tolerance": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "benchmark_status": {
+          "enum": [
+            "pending",
+            "validated"
+          ]
+        },
+        "benchmark_reference": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "x_axis_anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "coordinate": {
+                "type": "number"
+              },
+              "value": {
+                "type": "number"
+              },
+              "label_reported": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "coordinate",
+              "value",
+              "label_reported",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "y_axis_anchors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "coordinate": {
+                "type": "number"
+              },
+              "value": {
+                "type": "number"
+              },
+              "label_reported": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "coordinate",
+              "value",
+              "label_reported",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "coordinate_system",
+        "x_axis_scale",
+        "y_axis_scale",
+        "x_axis_orientation",
+        "y_axis_orientation",
+        "x_calibration_points",
+        "y_calibration_points",
+        "x_calibration_residual_px",
+        "y_calibration_residual_px",
+        "axis_confidence",
+        "calibration_artifact",
+        "trace_artifact",
+        "overlay_path",
+        "normalized_error_tolerance",
+        "benchmark_status",
+        "benchmark_reference"
+      ],
+      "additionalProperties": false
+    },
+    "curve": {
+      "type": "object",
+      "properties": {
+        "curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "figure_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "figure_panel": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "branch_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "freezing",
+            "thawing",
+            "freezing_and_thawing",
+            "cooling",
+            "warming",
+            "other",
+            "unknown"
+          ]
+        },
+        "branch_source": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "inferred_from_protocol",
+            "unknown"
+          ]
+        },
+        "cycle_number": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "method_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "nuclear_magnetic_resonance",
+            "pulsed_nuclear_magnetic_resonance",
+            "time_domain_reflectometry",
+            "differential_scanning_calorimetry",
+            "calorimetry",
+            "capacitance",
+            "dielectric_method",
+            "ech2o_sensor",
+            "cs615_sensor",
+            "theta_probe",
+            "other",
+            "unknown"
+          ]
+        },
+        "curve_data_type": {
+          "type": "string",
+          "enum": [
+            "measured_point",
+            "fitted_curve",
+            "predicted_curve",
+            "unknown"
+          ]
+        },
+        "legend_label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "color_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "marker_style_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "line_style_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_basis": {
+          "type": "string",
+          "enum": [
+            "volumetric",
+            "gravimetric_dry_mass",
+            "mass_fraction_wet_mass",
+            "normalized",
+            "other",
+            "unknown",
+            "unfrozen_water_saturation",
+            "liquid_water_saturation"
+          ]
+        },
+        "uwc_definition_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_unit": {
+          "const": "degree_celsius"
+        },
+        "extraction_method": {
+          "type": "string",
+          "enum": [
+            "supplementary_direct",
+            "table_direct",
+            "text_direct",
+            "pdf_vector",
+            "raster_marker",
+            "raster_curve",
+            "unknown"
+          ]
+        },
+        "data_origin": {
+          "type": "string",
+          "enum": [
+            "original_data",
+            "reproduced_literature_data",
+            "unknown"
+          ]
+        },
+        "original_citation_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "digitization": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/digitization"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "needs_manual_review": {
+          "type": "boolean"
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "raw_variable": {
+          "type": "string",
+          "enum": [
+            "volumetric_unfrozen_water_content",
+            "gravimetric_unfrozen_water_content",
+            "unfrozen_water_saturation",
+            "liquid_water_saturation",
+            "normalized_water_content",
+            "mass_fraction",
+            "unknown",
+            "unknown_water_variable"
+          ]
+        },
+        "raw_variable_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "variable_definition_verified": {
+          "type": "boolean"
+        },
+        "conversion_property_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "replicate_label_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_occurrences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              },
+              "case_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "legend_label": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "relationship": {
+                "enum": [
+                  "primary",
+                  "repeated_identical",
+                  "validation",
+                  "conflicting"
+                ]
+              },
+              "source_locator": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "evidence_ids",
+              "case_id",
+              "legend_label",
+              "relationship"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "series_variant_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_points_verified": {
+          "type": "boolean"
+        },
+        "plotted_uwc_axis_span": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "plotted_uwc_axis_unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "trace_geometry": {
+          "type": "string",
+          "enum": [
+            "single_valued",
+            "segmented",
+            "unknown"
+          ]
+        },
+        "trace_processing": {
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "review_required",
+                "failed"
+              ]
+            },
+            "raw_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "centerline_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "exported_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "max_normalized_reconstruction_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "mean_normalized_reconstruction_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "raw_to_centerline_median_normalized_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "raw_to_centerline_p95_normalized_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "raw_to_centerline_max_normalized_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "raw_to_centerline_mean_normalized_error": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "reduction_ratio": {
+              "type": "number"
+            },
+            "transition_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "segment_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "monotonicity_checked_on": {
+              "const": "scientific_curve_points"
+            },
+            "monotonicity_violation_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "simplification_tolerance_normalized": {
+              "type": "number"
+            },
+            "x_tolerance_normalized": {
+              "type": "number"
+            },
+            "denoise_tolerance_normalized": {
+              "type": "number"
+            },
+            "centerline_fidelity_p95_threshold_normalized": {
+              "type": "number"
+            },
+            "curve_isolation_status": {
+              "enum": [
+                "pass",
+                "partial",
+                "review_required",
+                "failed"
+              ]
+            },
+            "accepted_raw_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "excluded_contaminated_point_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "unresolved_segment_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "shared_exact_coordinate_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "shared_near_coordinate_fraction": {
+              "type": "number"
+            },
+            "shared_segment_fraction": {
+              "type": "number"
+            },
+            "trace_domain_coverage_fraction": {
+              "type": "number"
+            },
+            "accepted_domain_fraction": {
+              "type": "number"
+            },
+            "unresolved_domain_fraction": {
+              "type": "number"
+            },
+            "isolation_warning_codes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "fidelity_excluded_raw_point_count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "algorithm",
+            "status",
+            "raw_point_count",
+            "centerline_point_count",
+            "exported_point_count",
+            "max_normalized_reconstruction_error",
+            "mean_normalized_reconstruction_error",
+            "raw_to_centerline_median_normalized_error",
+            "raw_to_centerline_p95_normalized_error",
+            "raw_to_centerline_max_normalized_error",
+            "raw_to_centerline_mean_normalized_error",
+            "reduction_ratio",
+            "transition_point_count",
+            "segment_count",
+            "monotonicity_checked_on",
+            "monotonicity_violation_count",
+            "warnings",
+            "simplification_tolerance_normalized",
+            "x_tolerance_normalized",
+            "denoise_tolerance_normalized",
+            "centerline_fidelity_p95_threshold_normalized"
+          ],
+          "additionalProperties": false
+        },
+        "data_semantics": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "fitted",
+            "predicted",
+            "derived",
+            "unknown"
+          ]
+        },
+        "representation": {
+          "type": "string",
+          "enum": [
+            "discrete_markers",
+            "continuous_measured_trace",
+            "continuous_model_curve",
+            "tabulated_points",
+            "explicit_numeric_labels",
+            "equation_only",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "curve_id",
+        "paper_id",
+        "sample_id",
+        "condition_id",
+        "figure_id",
+        "figure_panel",
+        "page",
+        "branch_reported",
+        "branch",
+        "branch_source",
+        "cycle_number",
+        "method_reported",
+        "method",
+        "curve_data_type",
+        "legend_label",
+        "color_reported",
+        "marker_style_reported",
+        "line_style_reported",
+        "uwc_basis",
+        "uwc_definition_reported",
+        "temperature_unit",
+        "extraction_method",
+        "data_origin",
+        "original_citation_reported",
+        "digitization",
+        "needs_manual_review",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "point": {
+      "type": "object",
+      "properties": {
+        "point_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "point_index": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "temperature_celsius": {
+          "type": "number"
+        },
+        "temperature_original_value": {
+          "type": "number"
+        },
+        "temperature_original_unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "temperature_original_unit_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_value_source": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "derived",
+            "figure_digitized"
+          ]
+        },
+        "temperature_derivation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_original_value": {
+          "type": "number"
+        },
+        "uwc_original_unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "uwc_original_unit_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_original_basis": {
+          "type": "string",
+          "enum": [
+            "volumetric",
+            "gravimetric_dry_mass",
+            "mass_fraction_wet_mass",
+            "normalized",
+            "other",
+            "unknown",
+            "unfrozen_water_saturation",
+            "liquid_water_saturation"
+          ]
+        },
+        "uwc_preferred_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_preferred_unit": {
+          "anyOf": [
+            {
+              "const": "cubic_meter_per_cubic_meter"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_preferred_basis": {
+          "anyOf": [
+            {
+              "const": "volumetric"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_preferred_value_source": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "reported",
+                "derived",
+                "figure_digitized"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "uwc_derivation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "curve_data_type": {
+          "type": "string",
+          "enum": [
+            "measured_point",
+            "fitted_curve",
+            "predicted_curve",
+            "unknown"
+          ]
+        },
+        "extraction_method": {
+          "type": "string",
+          "enum": [
+            "supplementary_direct",
+            "table_direct",
+            "text_direct",
+            "pdf_vector",
+            "raster_marker",
+            "raster_curve",
+            "unknown"
+          ]
+        },
+        "value_source": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "derived",
+            "figure_digitized"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "temperature_normalized": {
+          "type": "boolean"
+        },
+        "uwc_normalized": {
+          "type": "boolean"
+        },
+        "trace_order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "raw_pixel_x": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "raw_pixel_y": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "trace_segment": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observation_quality": {
+          "type": "string",
+          "enum": [
+            "clear_marker",
+            "cluster_constrained",
+            "partially_occluded",
+            "source_label_exact",
+            "continuous_trace_sample",
+            "unknown"
+          ]
+        },
+        "candidate_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "component_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "path_position": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_assignment": {
+          "anyOf": [
+            {
+              "enum": [
+                "freezing",
+                "thawing",
+                "confirmed_shared",
+                "unresolved",
+                "rejected"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confirmed_shared": {
+          "type": "boolean"
+        },
+        "near_vertical": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "point_id",
+        "curve_id",
+        "point_index",
+        "temperature_celsius",
+        "temperature_original_value",
+        "temperature_original_unit",
+        "temperature_original_unit_reported",
+        "temperature_value_source",
+        "temperature_derivation_id",
+        "uwc_original_value",
+        "uwc_original_unit",
+        "uwc_original_unit_reported",
+        "uwc_original_basis",
+        "uwc_preferred_value",
+        "uwc_preferred_unit",
+        "uwc_preferred_basis",
+        "uwc_preferred_value_source",
+        "uwc_derivation_id",
+        "curve_data_type",
+        "extraction_method",
+        "value_source",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "model_value": {
+      "type": "object",
+      "properties": {
+        "model_value_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "name_reported": {
+          "type": "string"
+        },
+        "symbol_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "unit_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value_source": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "derived",
+            "figure_digitized"
+          ]
+        },
+        "derivation_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "normalized": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "model_value_id",
+        "name_reported",
+        "symbol_reported",
+        "value",
+        "value_reported",
+        "original_value",
+        "original_unit",
+        "unit",
+        "unit_reported",
+        "value_source",
+        "derivation_id",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "model": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "condition_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_name_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "model_type": {
+          "type": "string",
+          "enum": [
+            "empirical",
+            "theoretical",
+            "semi_empirical",
+            "other",
+            "unknown"
+          ]
+        },
+        "proposed_by_authors": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparison_model": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "existing_model": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "equation_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "equation_normalized": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/model_value"
+          }
+        },
+        "fit_statistics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/model_value"
+          }
+        },
+        "applicable_temperature_range_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "equation_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      },
+      "required": [
+        "model_id",
+        "paper_id",
+        "sample_id",
+        "condition_id",
+        "model_name_reported",
+        "model_type",
+        "proposed_by_authors",
+        "comparison_model",
+        "existing_model",
+        "equation_reported",
+        "equation_normalized",
+        "parameters",
+        "fit_statistics",
+        "applicable_temperature_range_reported",
+        "page",
+        "equation_number",
+        "evidence_ids",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "pdf_text",
+            "table",
+            "figure",
+            "supplementary",
+            "equation",
+            "protocol",
+            "bibliographic",
+            "other"
+          ]
+        },
+        "source_file": {
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "section_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "figure_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "figure_panel": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "table_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "equation_number": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "figure_caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "table_caption": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quoted_evidence": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_context": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_language": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transcription_status": {
+          "enum": [
+            "verified",
+            "unverified",
+            "ocr_uncertain"
+          ]
+        },
+        "source_role": {
+          "type": "string",
+          "enum": [
+            "primary_uwc",
+            "validation",
+            "sfcc_model",
+            "supporting"
+          ]
+        },
+        "expected_series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "condition_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "branch": {
+                "type": "string",
+                "enum": [
+                  "freezing",
+                  "thawing",
+                  "freezing_and_thawing",
+                  "cooling",
+                  "warming",
+                  "other",
+                  "unknown"
+                ]
+              },
+              "curve_data_type": {
+                "type": "string",
+                "enum": [
+                  "measured_point",
+                  "fitted_curve",
+                  "predicted_curve",
+                  "unknown"
+                ]
+              },
+              "series_variant_reported": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "data_semantics": {
+                "type": "string",
+                "enum": [
+                  "measured",
+                  "fitted",
+                  "predicted",
+                  "derived",
+                  "unknown"
+                ]
+              },
+              "representation": {
+                "type": "string",
+                "enum": [
+                  "discrete_markers",
+                  "continuous_measured_trace",
+                  "continuous_model_curve",
+                  "tabulated_points",
+                  "explicit_numeric_labels",
+                  "equation_only",
+                  "unknown"
+                ]
+              }
+            },
+            "required": [
+              "condition_id",
+              "branch",
+              "curve_data_type"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "evidence_id",
+        "source_type",
+        "source_file",
+        "page",
+        "section_reported",
+        "figure_number",
+        "figure_panel",
+        "table_number",
+        "equation_number",
+        "figure_caption",
+        "table_caption",
+        "quoted_evidence",
+        "source_context",
+        "source_language",
+        "transcription_status"
+      ],
+      "additionalProperties": false
+    },
+    "input": {
+      "type": "object",
+      "properties": {
+        "variable": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "definition_status": {
+          "enum": [
+            "explicit",
+            "uncertain"
+          ]
+        },
+        "assumed": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "variable",
+        "value",
+        "unit",
+        "source_id",
+        "source_field",
+        "evidence_ids",
+        "definition_status",
+        "assumed"
+      ],
+      "additionalProperties": false
+    },
+    "derivation": {
+      "type": "object",
+      "properties": {
+        "derivation_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "derived_variable": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "derivation_type": {
+          "type": "string",
+          "enum": [
+            "unit_conversion",
+            "physical_relation"
+          ]
+        },
+        "formula": {
+          "type": "string"
+        },
+        "input_variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/input"
+          }
+        },
+        "assumption_used": {
+          "type": "boolean"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "variable": {
+                "type": "string"
+              },
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "degree_celsius",
+                  "kelvin",
+                  "degree_fahrenheit",
+                  "cubic_meter_per_cubic_meter",
+                  "kilogram_per_kilogram",
+                  "kilogram_per_cubic_meter",
+                  "gram_per_cubic_centimeter",
+                  "dimensionless",
+                  "fraction",
+                  "percent",
+                  "square_meter_per_gram",
+                  "square_meter_per_kilogram",
+                  "decisiemens_per_meter",
+                  "microsiemens_per_centimeter",
+                  "centimole_charge_per_kilogram",
+                  "millimeter",
+                  "centimeter",
+                  "meter",
+                  "kilopascal",
+                  "megapascal",
+                  "pascal",
+                  "degree_celsius_per_hour",
+                  "degree_celsius_per_minute",
+                  "hour",
+                  "minute",
+                  "second",
+                  "other",
+                  "unknown",
+                  "mole_per_liter",
+                  "millimole_per_liter"
+                ]
+              },
+              "description": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "variable",
+              "value",
+              "unit",
+              "description"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "result": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "sample_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "condition_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specimen_role": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "uwc_nmr",
+                "uwc_dsc",
+                "uwc_measurement",
+                "triaxial",
+                "swcc",
+                "shear_test",
+                "compaction_test",
+                "general_material_property",
+                "other_test",
+                "unspecified"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "applicability_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "scope_verified": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "derivation_id",
+        "derived_variable",
+        "derivation_type",
+        "formula",
+        "input_variables",
+        "assumption_used",
+        "assumptions",
+        "result",
+        "unit",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "review_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "paper_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "object_type": {
+          "type": "string",
+          "enum": [
+            "paper",
+            "sample",
+            "condition",
+            "property",
+            "curve",
+            "point",
+            "model",
+            "evidence",
+            "derivation",
+            "translation"
+          ]
+        },
+        "object_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "issue_type": {
+          "type": "string",
+          "enum": [
+            "axis_uncertain",
+            "curve_identity_uncertain",
+            "legend_uncertain",
+            "unit_uncertain",
+            "uwc_definition_uncertain",
+            "physical_conflict",
+            "metadata_conflict",
+            "poor_resolution",
+            "overlapping_curves",
+            "formula_uncertain",
+            "terminology_uncertain",
+            "translation_uncertain",
+            "low_confidence",
+            "monotonicity_warning",
+            "physical_consistency_warning",
+            "missing_core_information",
+            "missing_overlay",
+            "benchmark_pending",
+            "source_verification_required",
+            "duplicate_record",
+            "conflicting_values",
+            "extraction_incomplete",
+            "anchor_conflict",
+            "missing_point_or_not_reported",
+            "recovery_required",
+            "metadata_incomplete",
+            "trace_processing_review",
+            "centerline_fidelity_warning",
+            "axis_anchor_unverified",
+            "severe_reverse_jump",
+            "initial_water_content_exceeded",
+            "possible_curve_duplication",
+            "branch_identity_switch",
+            "raw_observation_missing"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "figure": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "recommended_action": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "open",
+            "resolved"
+          ]
+        },
+        "resolution_notes": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "generated_by": {
+          "enum": [
+            "agent",
+            "validator",
+            "human"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "critical",
+            "important"
+          ]
+        }
+      },
+      "required": [
+        "review_id",
+        "paper_id",
+        "object_type",
+        "object_id",
+        "issue_type",
+        "description",
+        "page",
+        "figure",
+        "confidence",
+        "recommended_action",
+        "status",
+        "resolution_notes",
+        "generated_by"
+      ],
+      "additionalProperties": false
+    },
+    "translation": {
+      "type": "object",
+      "properties": {
+        "translation_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "source_pointer": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "translation_status": {
+          "enum": [
+            "verified",
+            "uncertain"
+          ]
+        }
+      },
+      "required": [
+        "translation_id",
+        "source_pointer",
+        "language",
+        "text",
+        "translation_status"
+      ],
+      "additionalProperties": false
+    },
+    "case_variable": {
+      "type": "object",
+      "properties": {
+        "property": {
+          "type": "string",
+          "enum": [
+            "specific_surface_area",
+            "initial_volumetric_water_content",
+            "initial_gravimetric_water_content",
+            "volumetric_water_content",
+            "gravimetric_water_content",
+            "dry_density",
+            "wet_density",
+            "particle_density",
+            "water_density",
+            "specific_gravity",
+            "degree_of_saturation",
+            "porosity",
+            "void_ratio",
+            "liquid_limit",
+            "plastic_limit",
+            "plasticity_index",
+            "sand_fraction",
+            "silt_fraction",
+            "clay_fraction",
+            "ph",
+            "electrical_conductivity",
+            "organic_carbon",
+            "cation_exchange_capacity",
+            "mineral_fraction",
+            "sample_diameter",
+            "sample_height",
+            "d10",
+            "d30",
+            "d50",
+            "d60",
+            "pressure",
+            "confining_pressure",
+            "cooling_rate",
+            "warming_rate",
+            "holding_time",
+            "salinity",
+            "solution_concentration",
+            "freezing_point",
+            "initial_freezing_temperature",
+            "phase_transition_temperature",
+            "other",
+            "maximum_dry_density",
+            "optimum_water_content",
+            "initial_water_saturation",
+            "initial_ionic_concentration",
+            "matric_suction",
+            "cycle_number",
+            "none",
+            "total_soluble_salt_content"
+          ]
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "values_reported": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "value_reported_text": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "value_reported_numeric": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "reported_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reported_basis": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "volumetric",
+                "gravimetric_dry_mass",
+                "mass_fraction_wet_mass",
+                "normalized",
+                "other",
+                "unknown",
+                "unfrozen_water_saturation",
+                "liquid_water_saturation"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reported_precisions": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "normalized_values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "normalized_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalized_basis": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "volumetric",
+                "gravimetric_dry_mass",
+                "mass_fraction_wet_mass",
+                "normalized",
+                "other",
+                "unknown",
+                "unfrozen_water_saturation",
+                "liquid_water_saturation"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalization_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "unit_scaling",
+                "physical_conversion"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "property",
+        "values",
+        "unit",
+        "values_reported",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "experimental_case": {
+      "type": "object",
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "case_label_reported": {
+          "type": "string"
+        },
+        "varying_property": {
+          "type": "string",
+          "enum": [
+            "specific_surface_area",
+            "initial_volumetric_water_content",
+            "initial_gravimetric_water_content",
+            "volumetric_water_content",
+            "gravimetric_water_content",
+            "dry_density",
+            "wet_density",
+            "particle_density",
+            "water_density",
+            "specific_gravity",
+            "degree_of_saturation",
+            "porosity",
+            "void_ratio",
+            "liquid_limit",
+            "plastic_limit",
+            "plasticity_index",
+            "sand_fraction",
+            "silt_fraction",
+            "clay_fraction",
+            "ph",
+            "electrical_conductivity",
+            "organic_carbon",
+            "cation_exchange_capacity",
+            "mineral_fraction",
+            "sample_diameter",
+            "sample_height",
+            "d10",
+            "d30",
+            "d50",
+            "d60",
+            "pressure",
+            "confining_pressure",
+            "cooling_rate",
+            "warming_rate",
+            "holding_time",
+            "salinity",
+            "solution_concentration",
+            "freezing_point",
+            "initial_freezing_temperature",
+            "phase_transition_temperature",
+            "other",
+            "maximum_dry_density",
+            "optimum_water_content",
+            "initial_water_saturation",
+            "initial_ionic_concentration",
+            "matric_suction",
+            "cycle_number",
+            "none",
+            "total_soluble_salt_content"
+          ]
+        },
+        "factor_label_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "variables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/case_variable"
+          }
+        },
+        "condition_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "branches": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "freezing",
+              "thawing",
+              "freezing_and_thawing",
+              "cooling",
+              "warming",
+              "other",
+              "unknown"
+            ]
+          }
+        },
+        "curve_data_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "measured_point",
+              "fitted_curve",
+              "predicted_curve",
+              "unknown"
+            ]
+          }
+        },
+        "temperature_range_celsius": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "case_id",
+        "sample_id",
+        "case_label_reported",
+        "varying_property",
+        "factor_label_reported",
+        "variables",
+        "condition_ids",
+        "branches",
+        "curve_data_types",
+        "temperature_range_celsius",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "coverage_series": {
+      "type": "object",
+      "properties": {
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "freezing",
+            "thawing",
+            "freezing_and_thawing",
+            "cooling",
+            "warming",
+            "other",
+            "unknown"
+          ]
+        },
+        "curve_data_type": {
+          "type": "string",
+          "enum": [
+            "measured_point",
+            "fitted_curve",
+            "predicted_curve",
+            "unknown"
+          ]
+        },
+        "series_variant_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_semantics": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "fitted",
+            "predicted",
+            "derived",
+            "unknown"
+          ]
+        },
+        "representation": {
+          "type": "string",
+          "enum": [
+            "discrete_markers",
+            "continuous_measured_trace",
+            "continuous_model_curve",
+            "tabulated_points",
+            "explicit_numeric_labels",
+            "equation_only",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "sample_id",
+        "condition_id",
+        "branch",
+        "curve_data_type"
+      ],
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "expected_curve_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "extracted_curve_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "matched_curve_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage_percentage": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inventory_available": {
+          "type": "boolean"
+        },
+        "source_occurrence_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unique_curve_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "missing_conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/coverage_series"
+          }
+        },
+        "unexpected_conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/coverage_series"
+          }
+        },
+        "duplicate_conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "condition_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "curve_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              },
+              "identical": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "condition_id",
+              "curve_ids",
+              "identical"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "curve_coverage_percentage": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "missing_curves": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "unexpected_curves": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "ambiguous_curves": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "design_dataset_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "documented_unavailable_dataset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "proxy_dataset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "unavailable_target_dataset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "expected_curve_count",
+        "extracted_curve_count",
+        "matched_curve_count",
+        "coverage_percentage",
+        "inventory_available",
+        "source_occurrence_count",
+        "unique_curve_ids",
+        "missing_conditions",
+        "unexpected_conditions",
+        "duplicate_conditions"
+      ],
+      "additionalProperties": false
+    },
+    "point_expectation": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperatures_celsius": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "information_type": {
+          "enum": [
+            "reported_targets",
+            "reported_observations",
+            "visible_markers",
+            "unspecified"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "source_points_verified": {
+          "type": "boolean"
+        },
+        "gap_resolution": {
+          "enum": [
+            "unresolved",
+            "not_reported_in_source",
+            "explicitly_not_measured"
+          ]
+        },
+        "resolution_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "protocol_expected": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids"
+          ],
+          "additionalProperties": false
+        },
+        "reported_expected": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids"
+          ],
+          "additionalProperties": false
+        },
+        "source_observable": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            },
+            "completeness": {
+              "enum": [
+                "complete",
+                "partial",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids",
+            "completeness"
+          ],
+          "additionalProperties": false
+        },
+        "protocol_applies_to_output": {
+          "type": "boolean"
+        },
+        "protocol_output_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "protocol_output_statement_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "information_type",
+            "evidence_ids",
+            "source_points_verified",
+            "gap_resolution",
+            "resolution_evidence_ids",
+            "explanation"
+          ]
+        },
+        {
+          "required": [
+            "protocol_expected",
+            "reported_expected",
+            "source_observable"
+          ]
+        }
+      ]
+    },
+    "expected_dataset": {
+      "type": "object",
+      "properties": {
+        "expected_curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "experimental_factors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "specific_surface_area",
+              "initial_volumetric_water_content",
+              "initial_gravimetric_water_content",
+              "volumetric_water_content",
+              "gravimetric_water_content",
+              "dry_density",
+              "wet_density",
+              "particle_density",
+              "water_density",
+              "specific_gravity",
+              "degree_of_saturation",
+              "porosity",
+              "void_ratio",
+              "liquid_limit",
+              "plastic_limit",
+              "plasticity_index",
+              "sand_fraction",
+              "silt_fraction",
+              "clay_fraction",
+              "ph",
+              "electrical_conductivity",
+              "organic_carbon",
+              "cation_exchange_capacity",
+              "mineral_fraction",
+              "sample_diameter",
+              "sample_height",
+              "d10",
+              "d30",
+              "d50",
+              "d60",
+              "pressure",
+              "confining_pressure",
+              "cooling_rate",
+              "warming_rate",
+              "holding_time",
+              "salinity",
+              "solution_concentration",
+              "freezing_point",
+              "initial_freezing_temperature",
+              "phase_transition_temperature",
+              "other",
+              "maximum_dry_density",
+              "optimum_water_content",
+              "initial_water_saturation",
+              "initial_ionic_concentration",
+              "matric_suction",
+              "cycle_number",
+              "none",
+              "total_soluble_salt_content"
+            ]
+          }
+        },
+        "condition_values": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "property": {
+                "type": "string",
+                "enum": [
+                  "specific_surface_area",
+                  "initial_volumetric_water_content",
+                  "initial_gravimetric_water_content",
+                  "volumetric_water_content",
+                  "gravimetric_water_content",
+                  "dry_density",
+                  "wet_density",
+                  "particle_density",
+                  "water_density",
+                  "specific_gravity",
+                  "degree_of_saturation",
+                  "porosity",
+                  "void_ratio",
+                  "liquid_limit",
+                  "plastic_limit",
+                  "plasticity_index",
+                  "sand_fraction",
+                  "silt_fraction",
+                  "clay_fraction",
+                  "ph",
+                  "electrical_conductivity",
+                  "organic_carbon",
+                  "cation_exchange_capacity",
+                  "mineral_fraction",
+                  "sample_diameter",
+                  "sample_height",
+                  "d10",
+                  "d30",
+                  "d50",
+                  "d60",
+                  "pressure",
+                  "confining_pressure",
+                  "cooling_rate",
+                  "warming_rate",
+                  "holding_time",
+                  "salinity",
+                  "solution_concentration",
+                  "freezing_point",
+                  "initial_freezing_temperature",
+                  "phase_transition_temperature",
+                  "other",
+                  "maximum_dry_density",
+                  "optimum_water_content",
+                  "initial_water_saturation",
+                  "initial_ionic_concentration",
+                  "matric_suction",
+                  "cycle_number",
+                  "none",
+                  "total_soluble_salt_content"
+                ]
+              },
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "degree_celsius",
+                  "kelvin",
+                  "degree_fahrenheit",
+                  "cubic_meter_per_cubic_meter",
+                  "kilogram_per_kilogram",
+                  "kilogram_per_cubic_meter",
+                  "gram_per_cubic_centimeter",
+                  "dimensionless",
+                  "fraction",
+                  "percent",
+                  "square_meter_per_gram",
+                  "square_meter_per_kilogram",
+                  "decisiemens_per_meter",
+                  "microsiemens_per_centimeter",
+                  "centimole_charge_per_kilogram",
+                  "millimeter",
+                  "centimeter",
+                  "meter",
+                  "kilopascal",
+                  "megapascal",
+                  "pascal",
+                  "degree_celsius_per_hour",
+                  "degree_celsius_per_minute",
+                  "hour",
+                  "minute",
+                  "second",
+                  "other",
+                  "unknown",
+                  "mole_per_liter",
+                  "millimole_per_liter"
+                ]
+              },
+              "evidence_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+                },
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "property",
+              "value",
+              "unit",
+              "evidence_ids"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "freezing",
+            "thawing",
+            "freezing_and_thawing",
+            "cooling",
+            "warming",
+            "other",
+            "unknown"
+          ]
+        },
+        "curve_data_type": {
+          "type": "string",
+          "enum": [
+            "measured_point",
+            "fitted_curve",
+            "predicted_curve",
+            "unknown"
+          ]
+        },
+        "expected_source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "measurement_status": {
+          "enum": [
+            "expected",
+            "explicitly_not_measured"
+          ]
+        },
+        "exclusion_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "expected_point_information": {
+          "$ref": "#/$defs/point_expectation"
+        },
+        "exclusion_reason_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "series_variant_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_semantics": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "fitted",
+            "predicted",
+            "derived",
+            "unknown"
+          ]
+        },
+        "representation": {
+          "type": "string",
+          "enum": [
+            "discrete_markers",
+            "continuous_measured_trace",
+            "continuous_model_curve",
+            "tabulated_points",
+            "explicit_numeric_labels",
+            "equation_only",
+            "unknown"
+          ]
+        },
+        "target_quantity_status": {
+          "type": "string",
+          "enum": [
+            "direct_target_quantity",
+            "derived_target_quantity",
+            "proxy_signal_only",
+            "unknown"
+          ]
+        },
+        "availability_status": {
+          "type": "string",
+          "enum": [
+            "available",
+            "partially_available",
+            "reported_but_not_numerically_available",
+            "not_found_in_source",
+            "not_applicable"
+          ]
+        },
+        "availability_evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "availability_explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "expected_curve_id",
+        "sample_id",
+        "condition_id",
+        "experimental_factors",
+        "condition_values",
+        "branch",
+        "curve_data_type",
+        "expected_source_ids",
+        "evidence_ids",
+        "measurement_status",
+        "exclusion_evidence_ids",
+        "expected_point_information"
+      ],
+      "additionalProperties": false
+    },
+    "numerical_observation": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "temperature_unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "degree_celsius",
+            "kelvin",
+            "degree_fahrenheit",
+            "cubic_meter_per_cubic_meter",
+            "kilogram_per_kilogram",
+            "kilogram_per_cubic_meter",
+            "gram_per_cubic_centimeter",
+            "dimensionless",
+            "fraction",
+            "percent",
+            "square_meter_per_gram",
+            "square_meter_per_kilogram",
+            "decisiemens_per_meter",
+            "microsiemens_per_centimeter",
+            "centimole_charge_per_kilogram",
+            "millimeter",
+            "centimeter",
+            "meter",
+            "kilopascal",
+            "megapascal",
+            "pascal",
+            "degree_celsius_per_hour",
+            "degree_celsius_per_minute",
+            "hour",
+            "minute",
+            "second",
+            "other",
+            "unknown",
+            "mole_per_liter",
+            "millimole_per_liter"
+          ]
+        },
+        "temperature_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "temperature",
+        "temperature_unit",
+        "value",
+        "unit",
+        "temperature_reported",
+        "value_reported"
+      ],
+      "additionalProperties": false
+    },
+    "numerical_dataset": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "sample_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "freezing",
+            "thawing",
+            "freezing_and_thawing",
+            "cooling",
+            "warming",
+            "other",
+            "unknown"
+          ]
+        },
+        "cycle_number": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "method": {
+          "type": "string",
+          "enum": [
+            "nuclear_magnetic_resonance",
+            "pulsed_nuclear_magnetic_resonance",
+            "time_domain_reflectometry",
+            "differential_scanning_calorimetry",
+            "calorimetry",
+            "capacitance",
+            "dielectric_method",
+            "ech2o_sensor",
+            "cs615_sensor",
+            "theta_probe",
+            "other",
+            "unknown"
+          ]
+        },
+        "curve_data_type": {
+          "type": "string",
+          "enum": [
+            "measured_point",
+            "fitted_curve",
+            "predicted_curve",
+            "unknown"
+          ]
+        },
+        "data_origin": {
+          "type": "string",
+          "enum": [
+            "original_data",
+            "reproduced_literature_data",
+            "unknown"
+          ]
+        },
+        "raw_variable": {
+          "type": "string",
+          "enum": [
+            "volumetric_unfrozen_water_content",
+            "gravimetric_unfrozen_water_content",
+            "unfrozen_water_saturation",
+            "liquid_water_saturation",
+            "normalized_water_content",
+            "mass_fraction",
+            "unknown",
+            "unknown_water_variable"
+          ]
+        },
+        "uwc_basis": {
+          "type": "string",
+          "enum": [
+            "volumetric",
+            "gravimetric_dry_mass",
+            "mass_fraction_wet_mass",
+            "normalized",
+            "other",
+            "unknown",
+            "unfrozen_water_saturation",
+            "liquid_water_saturation"
+          ]
+        },
+        "variable_definition_verified": {
+          "type": "boolean"
+        },
+        "source_kind": {
+          "enum": [
+            "structured_data",
+            "table",
+            "numerical_label",
+            "numerical_text"
+          ]
+        },
+        "coverage_role": {
+          "enum": [
+            "full_series",
+            "anchors_only"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "source_locator": {
+          "type": "string"
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/numerical_observation"
+          }
+        },
+        "table_binding": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "sheet": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "row_start": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "row_end": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "temperature_column": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "value_column": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "temperature_unit": {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            }
+          },
+          "required": [
+            "path",
+            "sha256",
+            "sheet",
+            "row_start",
+            "row_end",
+            "temperature_column",
+            "value_column",
+            "temperature_unit",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "variable_definition_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "original_citation_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "series_variant_reported": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "data_semantics": {
+          "type": "string",
+          "enum": [
+            "measured",
+            "fitted",
+            "predicted",
+            "derived",
+            "unknown"
+          ]
+        },
+        "representation": {
+          "type": "string",
+          "enum": [
+            "discrete_markers",
+            "continuous_measured_trace",
+            "continuous_model_curve",
+            "tabulated_points",
+            "explicit_numeric_labels",
+            "equation_only",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "dataset_id",
+        "sample_id",
+        "condition_id",
+        "branch",
+        "cycle_number",
+        "method",
+        "curve_data_type",
+        "data_origin",
+        "raw_variable",
+        "uwc_basis",
+        "variable_definition_verified",
+        "source_kind",
+        "coverage_role",
+        "evidence_ids",
+        "source_locator",
+        "observations"
+      ],
+      "additionalProperties": false
+    },
+    "recovery_attempt": {
+      "type": "object",
+      "properties": {
+        "expected_curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "input_fingerprint": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "recovered",
+            "not_found",
+            "ambiguous",
+            "source_unavailable",
+            "targeted_review_required"
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "target_pages": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "search_terms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_hits": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "expected_curve_id",
+        "input_fingerprint",
+        "status",
+        "source_ids",
+        "target_pages",
+        "search_terms",
+        "source_hits",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "anchor_check": {
+      "type": "object",
+      "properties": {
+        "check_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "dataset_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "observation_index": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "curve_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "point_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reference_point_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "absolute_error": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normalized_error": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparison_unit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "degree_celsius",
+                "kelvin",
+                "degree_fahrenheit",
+                "cubic_meter_per_cubic_meter",
+                "kilogram_per_kilogram",
+                "kilogram_per_cubic_meter",
+                "gram_per_cubic_centimeter",
+                "dimensionless",
+                "fraction",
+                "percent",
+                "square_meter_per_gram",
+                "square_meter_per_kilogram",
+                "decisiemens_per_meter",
+                "microsiemens_per_centimeter",
+                "centimole_charge_per_kilogram",
+                "millimeter",
+                "centimeter",
+                "meter",
+                "kilopascal",
+                "megapascal",
+                "pascal",
+                "degree_celsius_per_hour",
+                "degree_celsius_per_minute",
+                "hour",
+                "minute",
+                "second",
+                "other",
+                "unknown",
+                "mole_per_liter",
+                "millimole_per_liter"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_error_celsius": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "within_tolerance",
+            "warning",
+            "strong_warning",
+            "ambiguous",
+            "unmatched",
+            "incompatible_variable",
+            "conflicting_references"
+          ]
+        },
+        "selected": {
+          "type": "boolean"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "check_id",
+        "dataset_id",
+        "observation_index",
+        "curve_id",
+        "point_id",
+        "reference_point_id",
+        "absolute_error",
+        "normalized_error",
+        "comparison_unit",
+        "temperature_error_celsius",
+        "status",
+        "selected",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "anchor_resolution": {
+      "type": "object",
+      "properties": {
+        "check_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "neighbor_points_checked": {
+          "type": "boolean"
+        },
+        "resolution": {
+          "enum": [
+            "verified_source_choice",
+            "recalibrated"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "explanation": {
+          "type": "string"
+        },
+        "comparison_fingerprint": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "check_id",
+        "neighbor_points_checked",
+        "resolution",
+        "evidence_ids",
+        "explanation"
+      ],
+      "additionalProperties": false
+    },
+    "point_coverage_row": {
+      "type": "object",
+      "properties": {
+        "expected_curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "curve_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expected_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "extracted_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing_temperatures_celsius": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "missing_point_or_not_reported",
+            "explained_source_gap",
+            "not_checked"
+          ]
+        },
+        "explanation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "protocol_expected": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids"
+          ],
+          "additionalProperties": false
+        },
+        "reported_expected": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids"
+          ],
+          "additionalProperties": false
+        },
+        "source_observable": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "temperatures_celsius": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "evidence_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            },
+            "completeness": {
+              "enum": [
+                "complete",
+                "partial",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "count",
+            "temperatures_celsius",
+            "evidence_ids",
+            "completeness"
+          ],
+          "additionalProperties": false
+        },
+        "protocol_difference_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "protocol_missing_temperatures_celsius": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "reported_missing_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observable_missing_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "expected_curve_id",
+        "curve_id",
+        "expected_count",
+        "extracted_count",
+        "missing_count",
+        "missing_temperatures_celsius",
+        "status",
+        "explanation"
+      ],
+      "additionalProperties": false
+    },
+    "point_coverage": {
+      "type": "object",
+      "properties": {
+        "extracted_point_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "known_expected_point_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assessed_curve_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unexplained_gap_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "explained_gap_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_checked_curve_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "curves": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/point_coverage_row"
+          }
+        },
+        "protocol_expected_point_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reported_expected_point_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source_observable_point_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "protocol_difference_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "observable_missing_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "extracted_point_count",
+        "known_expected_point_count",
+        "assessed_curve_count",
+        "unexplained_gap_count",
+        "explained_gap_count",
+        "not_checked_curve_count",
+        "curves"
+      ],
+      "additionalProperties": false
+    },
+    "trace_diagnostic": {
+      "type": "object",
+      "properties": {
+        "segment_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "branch": {
+          "type": "string",
+          "enum": [
+            "freezing",
+            "thawing",
+            "freezing_and_thawing",
+            "cooling",
+            "warming",
+            "other",
+            "unknown"
+          ]
+        },
+        "status": {
+          "enum": [
+            "selected",
+            "rejected",
+            "unresolved"
+          ]
+        },
+        "failure_reason": {
+          "enum": [
+            "shared_path_true_overlap",
+            "shared_path_candidate_collision",
+            "insufficient_local_geometry",
+            "near_vertical_ambiguity",
+            "multimodal_candidate_set",
+            "abrupt_path_discontinuity",
+            "marker_occlusion",
+            "branch_identity_ambiguous",
+            "centerline_fidelity_failure",
+            "raster_vector_resolution_limit",
+            "unknown"
+          ]
+        },
+        "resolution_class": {
+          "enum": [
+            "algorithmically_resolvable",
+            "source_intrinsic_ambiguity",
+            "source_intrinsic_or_identity_unresolved",
+            "unknown"
+          ]
+        },
+        "start_candidate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "end_candidate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "pixel_coordinates": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mapped_coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        },
+        "local_tangent": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "local_curvature": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "competing_paths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "competing_branch_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "component_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "shared_candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "local_confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "diagnostic_note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temperature_range": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "uwc_range": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "segment_id",
+        "curve_id",
+        "condition_id",
+        "branch",
+        "status",
+        "failure_reason",
+        "resolution_class",
+        "start_candidate",
+        "end_candidate",
+        "candidate_ids",
+        "pixel_coordinates",
+        "mapped_coordinates",
+        "local_tangent",
+        "local_curvature",
+        "competing_paths",
+        "competing_branch_ids",
+        "component_ids",
+        "shared_candidate_ids",
+        "local_confidence",
+        "diagnostic_note",
+        "temperature_range",
+        "uwc_range"
+      ],
+      "additionalProperties": false
+    },
+    "branch_tracking_spec": {
+      "type": "object",
+      "properties": {
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "freezing_curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "thawing_curve_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "freezing_start_candidate": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "freezing_end_candidate": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "thawing_start_candidate": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "thawing_end_candidate": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "freezing_component_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "thawing_component_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "max_edge_distance_normalized": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "condition_id",
+        "freezing_curve_id",
+        "thawing_curve_id",
+        "freezing_start_candidate",
+        "freezing_end_candidate",
+        "thawing_start_candidate",
+        "thawing_end_candidate",
+        "freezing_component_id",
+        "thawing_component_id",
+        "max_edge_distance_normalized",
+        "evidence_ids"
+      ],
+      "additionalProperties": false
+    },
+    "branch_tracking_result": {
+      "type": "object",
+      "properties": {
+        "condition_id": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+        },
+        "status": {
+          "enum": [
+            "pass",
+            "unresolved"
+          ]
+        },
+        "paths": {
+          "type": "object",
+          "properties": {
+            "freezing": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            },
+            "thawing": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "freezing",
+            "thawing"
+          ],
+          "additionalProperties": false
+        },
+        "candidate_assignments": {
+          "type": "object"
+        },
+        "confirmed_shared_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "unresolved_candidate_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+          },
+          "uniqueItems": true
+        },
+        "true_crossing_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "identity_switch_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bridged": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "condition_id",
+        "status",
+        "paths",
+        "candidate_assignments",
+        "confirmed_shared_ids",
+        "unresolved_candidate_ids",
+        "true_crossing_count",
+        "identity_switch_count",
+        "bridged"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

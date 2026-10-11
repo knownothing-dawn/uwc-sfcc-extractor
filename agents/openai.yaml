@@ -1,0 +1,4 @@
+interface:
+  display_name: "UWC / SFCC Extractor"
+  short_description: "Extract evidence-linked UWC and SFCC paper datasets"
+  default_prompt: "Use $uwc-sfcc-extractor to extract a reviewable per-paper UWC/SFCC dataset from these PDFs."

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the repository release."
+title: "UWC/SFCC Extractor"
+type: software
+version: "1.6.0-rc.1"
+date-released: 2026-09-29
+authors:
+  - name: "UWC/SFCC Extractor contributors"
+license: MIT
+abstract: >-
+  An evidence-preserving Codex skill and Python toolkit for extracting reviewable
+  unfrozen-water-content and soil-freezing-characteristic-curve datasets from
+  research literature.
+keywords:
+  - unfrozen water content
+  - soil freezing characteristic curve
+  - literature data extraction
+  - scientific quality assurance

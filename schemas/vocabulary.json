@@ -1,0 +1,555 @@
+{
+  "vocabulary_version": "1.6.0",
+  "terms": {
+    "source_role": [
+      "primary_uwc",
+      "validation",
+      "sfcc_model",
+      "supporting"
+    ],
+    "review_severity": [
+      "critical",
+      "important",
+      "note"
+    ],
+    "soil_type": [
+      "sand",
+      "silt",
+      "clay",
+      "loam",
+      "loess",
+      "bentonite",
+      "kaolinite",
+      "peat",
+      "soil_mixture",
+      "artificial_mixture",
+      "cement_treated_soil",
+      "pure_mineral",
+      "other_porous_geomaterial",
+      "other",
+      "unknown"
+    ],
+    "material_category": [
+      "natural_soil",
+      "soil_mixture",
+      "artificial_mixture",
+      "treated_soil",
+      "pure_mineral_sample",
+      "other_porous_geomaterial",
+      "other",
+      "unknown"
+    ],
+    "sample_preparation": [
+      "undisturbed",
+      "remolded",
+      "compacted",
+      "saturated",
+      "unsaturated",
+      "slurry_prepared",
+      "air_dried",
+      "oven_dried",
+      "freeze_dried",
+      "other",
+      "unknown"
+    ],
+    "branch": [
+      "freezing",
+      "thawing",
+      "freezing_and_thawing",
+      "cooling",
+      "warming",
+      "other",
+      "unknown"
+    ],
+    "branch_source": [
+      "reported",
+      "inferred_from_protocol",
+      "unknown"
+    ],
+    "measurement_method": [
+      "nuclear_magnetic_resonance",
+      "pulsed_nuclear_magnetic_resonance",
+      "time_domain_reflectometry",
+      "differential_scanning_calorimetry",
+      "calorimetry",
+      "capacitance",
+      "dielectric_method",
+      "ech2o_sensor",
+      "cs615_sensor",
+      "theta_probe",
+      "other",
+      "unknown"
+    ],
+    "curve_data_type": [
+      "measured_point",
+      "fitted_curve",
+      "predicted_curve",
+      "unknown"
+    ],
+    "value_source": [
+      "reported",
+      "derived",
+      "figure_digitized"
+    ],
+    "extraction_method": [
+      "supplementary_direct",
+      "table_direct",
+      "text_direct",
+      "pdf_vector",
+      "raster_marker",
+      "raster_curve",
+      "unknown"
+    ],
+    "uwc_basis": [
+      "volumetric",
+      "gravimetric_dry_mass",
+      "mass_fraction_wet_mass",
+      "normalized",
+      "other",
+      "unknown",
+      "unfrozen_water_saturation",
+      "liquid_water_saturation"
+    ],
+    "data_origin": [
+      "original_data",
+      "reproduced_literature_data",
+      "unknown"
+    ],
+    "confidence": [
+      "high",
+      "medium",
+      "low"
+    ],
+    "extraction_status": [
+      "complete",
+      "partial",
+      "metadata_only",
+      "manual_review_required",
+      "not_relevant"
+    ],
+    "review_status": [
+      "database_ready",
+      "usable_with_review",
+      "partial",
+      "insufficient",
+      "pending",
+      "approved",
+      "rejected"
+    ],
+    "normalization_status": [
+      "exact_match",
+      "verified_mapping",
+      "uncertain",
+      "unmapped"
+    ],
+    "issue_type": [
+      "axis_uncertain",
+      "curve_identity_uncertain",
+      "legend_uncertain",
+      "unit_uncertain",
+      "uwc_definition_uncertain",
+      "physical_conflict",
+      "metadata_conflict",
+      "poor_resolution",
+      "overlapping_curves",
+      "formula_uncertain",
+      "terminology_uncertain",
+      "translation_uncertain",
+      "low_confidence",
+      "monotonicity_warning",
+      "physical_consistency_warning",
+      "missing_core_information",
+      "missing_overlay",
+      "benchmark_pending",
+      "source_verification_required",
+      "duplicate_record",
+      "conflicting_values",
+      "extraction_incomplete",
+      "anchor_conflict",
+      "missing_point_or_not_reported",
+      "recovery_required",
+      "metadata_incomplete",
+      "trace_processing_review"
+      ,"centerline_fidelity_warning",
+      "axis_anchor_unverified",
+      "severe_reverse_jump",
+      "initial_water_content_exceeded",
+      "possible_curve_duplication",
+      "branch_identity_switch",
+      "raw_observation_missing"
+    ],
+    "object_type": [
+      "paper",
+      "sample",
+      "condition",
+      "property",
+      "curve",
+      "point",
+      "model",
+      "evidence",
+      "derivation",
+      "translation"
+    ],
+    "source_type": [
+      "pdf_text",
+      "table",
+      "figure",
+      "supplementary",
+      "equation",
+      "protocol",
+      "bibliographic",
+      "other"
+    ],
+    "model_type": [
+      "empirical",
+      "theoretical",
+      "semi_empirical",
+      "other",
+      "unknown"
+    ],
+    "derivation_type": [
+      "unit_conversion",
+      "physical_relation"
+    ],
+    "property": [
+      "specific_surface_area",
+      "initial_volumetric_water_content",
+      "initial_gravimetric_water_content",
+      "volumetric_water_content",
+      "gravimetric_water_content",
+      "dry_density",
+      "wet_density",
+      "particle_density",
+      "water_density",
+      "specific_gravity",
+      "degree_of_saturation",
+      "porosity",
+      "void_ratio",
+      "liquid_limit",
+      "plastic_limit",
+      "plasticity_index",
+      "sand_fraction",
+      "silt_fraction",
+      "clay_fraction",
+      "ph",
+      "electrical_conductivity",
+      "organic_carbon",
+      "cation_exchange_capacity",
+      "mineral_fraction",
+      "sample_diameter",
+      "sample_height",
+      "d10",
+      "d30",
+      "d50",
+      "d60",
+      "pressure",
+      "confining_pressure",
+      "cooling_rate",
+      "warming_rate",
+      "holding_time",
+      "salinity",
+      "solution_concentration",
+      "freezing_point",
+      "initial_freezing_temperature",
+      "phase_transition_temperature",
+      "other",
+      "maximum_dry_density",
+      "optimum_water_content",
+      "initial_water_saturation",
+      "initial_ionic_concentration",
+      "matric_suction",
+      "total_soluble_salt_content"
+    ],
+    "mineral": [
+      "quartz",
+      "kaolinite",
+      "montmorillonite",
+      "illite",
+      "feldspar",
+      "calcite",
+      "other",
+      "unknown"
+    ],
+    "uwc_variable": [
+      "volumetric_unfrozen_water_content",
+      "gravimetric_unfrozen_water_content",
+      "unfrozen_water_saturation",
+      "liquid_water_saturation",
+      "normalized_water_content",
+      "mass_fraction",
+      "unknown",
+      "unknown_water_variable"
+    ],
+    "experimental_factor": [
+      "specific_surface_area",
+      "initial_volumetric_water_content",
+      "initial_gravimetric_water_content",
+      "volumetric_water_content",
+      "gravimetric_water_content",
+      "dry_density",
+      "wet_density",
+      "particle_density",
+      "water_density",
+      "specific_gravity",
+      "degree_of_saturation",
+      "porosity",
+      "void_ratio",
+      "liquid_limit",
+      "plastic_limit",
+      "plasticity_index",
+      "sand_fraction",
+      "silt_fraction",
+      "clay_fraction",
+      "ph",
+      "electrical_conductivity",
+      "organic_carbon",
+      "cation_exchange_capacity",
+      "mineral_fraction",
+      "sample_diameter",
+      "sample_height",
+      "d10",
+      "d30",
+      "d50",
+      "d60",
+      "pressure",
+      "confining_pressure",
+      "cooling_rate",
+      "warming_rate",
+      "holding_time",
+      "salinity",
+      "solution_concentration",
+      "freezing_point",
+      "initial_freezing_temperature",
+      "phase_transition_temperature",
+      "other",
+      "maximum_dry_density",
+      "optimum_water_content",
+      "initial_water_saturation",
+      "initial_ionic_concentration",
+      "matric_suction",
+      "cycle_number",
+      "none",
+      "total_soluble_salt_content"
+    ],
+    "data_semantics": [
+      "measured",
+      "fitted",
+      "predicted",
+      "derived",
+      "unknown"
+    ],
+    "representation": [
+      "discrete_markers",
+      "continuous_measured_trace",
+      "continuous_model_curve",
+      "tabulated_points",
+      "explicit_numeric_labels",
+      "equation_only",
+      "unknown"
+    ],
+    "target_quantity_status": [
+      "direct_target_quantity",
+      "derived_target_quantity",
+      "proxy_signal_only",
+      "unknown"
+    ],
+    "availability_status": [
+      "available",
+      "partially_available",
+      "reported_but_not_numerically_available",
+      "not_found_in_source",
+      "not_applicable"
+    ],
+    "property_role": [
+      "test_dry_density",
+      "maximum_dry_density",
+      "natural_bulk_density",
+      "wet_bulk_density",
+      "dry_density_reported_unspecified_context",
+      "particle_density",
+      "specific_gravity",
+      "average_density_basis_unspecified",
+      "porosity",
+      "water_density",
+      "initial_water_content",
+      "other"
+    ],
+    "experiment_role": [
+      "uwc_nmr",
+      "uwc_dsc",
+      "uwc_measurement",
+      "triaxial",
+      "swcc",
+      "shear_test",
+      "compaction_test",
+      "general_material_property",
+      "other_test",
+      "unspecified"
+    ],
+    "trace_geometry": [
+      "single_valued",
+      "segmented",
+      "unknown"
+    ],
+    "trace_processing_status": [
+      "pass",
+      "review_required",
+      "failed"
+    ],
+    "observation_quality": [
+      "clear_marker",
+      "cluster_constrained",
+      "partially_occluded",
+      "source_label_exact",
+      "continuous_trace_sample",
+      "unknown"
+    ]
+  },
+  "units": {
+    "degree_celsius": {
+      "display_symbol": "°C",
+      "display_label_zh": "摄氏度"
+    },
+    "kelvin": {
+      "display_symbol": "K"
+    },
+    "degree_fahrenheit": {
+      "display_symbol": "°F"
+    },
+    "cubic_meter_per_cubic_meter": {
+      "display_symbol": "m³/m³",
+      "display_label_zh": "体积含水率"
+    },
+    "kilogram_per_kilogram": {
+      "display_symbol": "kg/kg"
+    },
+    "kilogram_per_cubic_meter": {
+      "display_symbol": "kg/m³"
+    },
+    "gram_per_cubic_centimeter": {
+      "display_symbol": "g/cm³"
+    },
+    "dimensionless": {
+      "display_symbol": "1"
+    },
+    "fraction": {
+      "display_symbol": "fraction"
+    },
+    "percent": {
+      "display_symbol": "%"
+    },
+    "square_meter_per_gram": {
+      "display_symbol": "m²/g"
+    },
+    "square_meter_per_kilogram": {
+      "display_symbol": "m²/kg"
+    },
+    "decisiemens_per_meter": {
+      "display_symbol": "dS/m"
+    },
+    "microsiemens_per_centimeter": {
+      "display_symbol": "µS/cm"
+    },
+    "centimole_charge_per_kilogram": {
+      "display_symbol": "cmol(+)/kg"
+    },
+    "millimeter": {
+      "display_symbol": "mm"
+    },
+    "centimeter": {
+      "display_symbol": "cm"
+    },
+    "meter": {
+      "display_symbol": "m"
+    },
+    "kilopascal": {
+      "display_symbol": "kPa"
+    },
+    "megapascal": {
+      "display_symbol": "MPa"
+    },
+    "pascal": {
+      "display_symbol": "Pa"
+    },
+    "degree_celsius_per_hour": {
+      "display_symbol": "°C/h"
+    },
+    "degree_celsius_per_minute": {
+      "display_symbol": "°C/min"
+    },
+    "hour": {
+      "display_symbol": "h"
+    },
+    "minute": {
+      "display_symbol": "min"
+    },
+    "second": {
+      "display_symbol": "s"
+    },
+    "other": {
+      "display_symbol": "other"
+    },
+    "unknown": {
+      "display_symbol": "unknown"
+    },
+    "mole_per_liter": {
+      "display_symbol": "mol/L"
+    },
+    "millimole_per_liter": {
+      "display_symbol": "mmol/L"
+    }
+  },
+  "aliases": {
+    "soil_type": {
+      "黄土": "loess",
+      "砂土": "sand",
+      "粉土": "silt",
+      "黏土": "clay",
+      "粘土": "clay",
+      "膨润土": "bentonite",
+      "高岭石": "kaolinite",
+      "泥炭": "peat"
+    },
+    "branch": {
+      "freezing + thawing": "freezing_and_thawing",
+      "freezing and thawing": "freezing_and_thawing",
+      "冻结": "freezing",
+      "融化": "thawing",
+      "降温": "cooling",
+      "升温": "warming"
+    },
+    "measurement_method": {
+      "nmr": "nuclear_magnetic_resonance",
+      "p-nmr": "pulsed_nuclear_magnetic_resonance",
+      "tdr": "time_domain_reflectometry",
+      "dsc": "differential_scanning_calorimetry",
+      "ech2o": "ech2o_sensor",
+      "cs615": "cs615_sensor",
+      "theta probe": "theta_probe",
+      "核磁共振": "nuclear_magnetic_resonance"
+    },
+    "unit": {
+      "°c": "degree_celsius",
+      "℃": "degree_celsius",
+      "k": "kelvin",
+      "°f": "degree_fahrenheit",
+      "m³/m³": "cubic_meter_per_cubic_meter",
+      "m3/m3": "cubic_meter_per_cubic_meter",
+      "kg/kg": "kilogram_per_kilogram",
+      "kg/m³": "kilogram_per_cubic_meter",
+      "kg/m3": "kilogram_per_cubic_meter",
+      "g/cm³": "gram_per_cubic_centimeter",
+      "g/cm3": "gram_per_cubic_centimeter",
+      "%": "percent",
+      "m²/g": "square_meter_per_gram",
+      "m2/g": "square_meter_per_gram",
+      "ds/m": "decisiemens_per_meter",
+      "cmol(+)/kg": "centimole_charge_per_kilogram",
+      "mm": "millimeter",
+      "kpa": "kilopascal",
+      "°c/h": "degree_celsius_per_hour",
+      "mol/l": "mole_per_liter",
+      "mmol/l": "millimole_per_liter"
+    }
+  }
+}
